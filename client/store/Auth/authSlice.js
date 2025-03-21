@@ -10,7 +10,7 @@ const initialState = {
 // **Register User**
 export const registerUser = createAsyncThunk("auth/registerUser", async (formData, { rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:4000/api/auth/register", formData, { withCredentials: true });
+        const response = await axios.post("https://authentication-30yl.onrender.com/api/auth/register", formData, { withCredentials: true });
         return response?.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.message || "Registration failed.");
@@ -20,7 +20,7 @@ export const registerUser = createAsyncThunk("auth/registerUser", async (formDat
 // **Login User**
 export const loginUser = createAsyncThunk("auth/loginUser", async (formData, { rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:4000/api/auth/login", formData, { withCredentials: true });
+        const response = await axios.post("https://authentication-30yl.onrender.com/api/auth/login", formData, { withCredentials: true });
         localStorage.setItem("user", JSON.stringify(response.data.user));
         return response?.data;
     } catch (error) {
@@ -31,7 +31,7 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (formData, { r
 // **Check User Existence**
 export const checkUserExists = createAsyncThunk("auth/check-user", async (formData, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:4000/api/auth/check-user', formData, { withCredentials: true });
+        const response = await axios.post('https://authentication-30yl.onrender.com/api/auth/check-user', formData, { withCredentials: true });
         return response?.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.message || "User not found");
@@ -40,7 +40,7 @@ export const checkUserExists = createAsyncThunk("auth/check-user", async (formDa
 
 export const forgotPassword = createAsyncThunk("auth/forgotPassword", async (formData, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:4000/api/auth/change-password', formData, { withCredentials: true });
+        const response = await axios.post('https://authentication-30yl.onrender.com/api/auth/change-password', formData, { withCredentials: true });
         return response?.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.message || "Couldn't change password");
@@ -50,7 +50,7 @@ export const forgotPassword = createAsyncThunk("auth/forgotPassword", async (for
 // **Check Auth**
 export const checkAuth = createAsyncThunk("auth/checkAuth", async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get("http://localhost:4000/api/auth/check-auth", {
+        const response = await axios.get("https://authentication-30yl.onrender.com/api/auth/check-auth", {
             withCredentials: true,
             headers: { "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate" },
         });
@@ -62,7 +62,7 @@ export const checkAuth = createAsyncThunk("auth/checkAuth", async (_, { rejectWi
 });
 export const logoutUser = createAsyncThunk("auth/logoutUser", async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.post("http://localhost:4000/api/auth/logout", {}, {
+        const response = await axios.post("https://authentication-30yl.onrender.com/api/auth/logout", {}, {
             withCredentials: true,
         });
         localStorage.removeItem("user");

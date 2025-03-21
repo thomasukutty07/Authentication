@@ -12,7 +12,7 @@ export const fetchImages = createAsyncThunk(
   "fetch-image",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:4000/api/image/get-image", {
+      const response = await axios.get("https://authentication-30yl.onrender.com/api/image/get-image", {
         withCredentials: true,
       });
       return response.data;
@@ -26,7 +26,7 @@ export const addImage = createAsyncThunk("add-image", async (file, { rejectWithV
   try {
     const formData = new FormData();
     formData.append("image", file);
-    const response = await axios.post("http://localhost:4000/api/image/upload", formData, {
+    const response = await axios.post("https://authentication-30yl.onrender.com/api/image/upload", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -42,7 +42,7 @@ export const addImage = createAsyncThunk("add-image", async (file, { rejectWithV
 export const deleteImage = createAsyncThunk('delete-image', async (id, { rejectWithValue }) => {
   try {
     console.log(id);
-    const response = await axios.delete(`http://localhost:4000/api/image/delete/${id}`, { withCredentials: true })
+    const response = await axios.delete(`https://authentication-30yl.onrender.com/api/image/delete/${id}`, { withCredentials: true })
     return response?.data
   } catch (error) {
     return rejectWithValue(error.response?.data || "Image delete failed")
