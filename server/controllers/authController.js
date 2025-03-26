@@ -55,7 +55,7 @@ export const loginUser = async (req, res) => {
         }, process.env.JWT_SECRET_KEY, { expiresIn: "60m" })
 
         res.cookie("token", accessToken, {
-            httpOnly: true, secure: false
+            httpOnly: true, secure: true
         })
 
         res.json({ success: true, message: "Logged in successfully", user: findExistingUser, accessToken })
